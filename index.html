@@ -123,6 +123,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(248,246,241,.92);backdro
 .portrait{position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden;background:var(--sage-tint)}
 .portrait .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--slate-3);text-align:center;padding:24px;font-size:.95rem}
 .portrait .ph svg{width:56px;height:56px;opacity:.6}
+.portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 35%}
 .letter p{font-size:1.08rem;color:var(--slate-2)}
 .letter p.lead{font-family:var(--serif);font-size:1.45rem;color:var(--slate);line-height:1.4}
 .creds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 32px;list-style:none;padding:28px 0 0;margin:28px 0 0;border-top:1px solid var(--line);font-size:.95rem;color:var(--slate-2)}
@@ -305,11 +306,7 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
 <section id="about">
   <div class="wrap about-grid">
     <div class="portrait">
-      <!-- Replace this block with <img src="portrait.jpg" alt="Dr. Milo Artunduaga with his dog"> -->
-      <div class="ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
-        <span>Portrait of Dr. Artunduaga<br>(the one with the dog — keep it)</span>
-      </div>
+      <img src="portrait.jpg" alt="Dr. Milo Artunduaga with his dog" width="800" height="981">
     </div>
     <div class="letter">
       <p class="eyebrow">About</p>
