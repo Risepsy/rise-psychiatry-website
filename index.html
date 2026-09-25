@@ -12,6 +12,8 @@
 <meta property="og:url" content="https://www.risepsychiatry.com/">
 <meta property="og:image" content="https://www.risepsychiatry.com/og-image.jpg">
 <meta name="theme-color" content="#2F3E46">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
@@ -92,7 +94,8 @@ section{padding-block:96px}
 header{position:sticky;top:0;z-index:20;background:rgba(248,246,241,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:76px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--slate)}
-.brand svg{width:40px;height:40px}
+.brand img{width:48px;height:48px}
+.foot .brand img{filter:invert(1) hue-rotate(180deg) brightness(1.05)}
 .brand b{font-family:var(--serif);font-weight:500;font-size:1.3rem;letter-spacing:.01em}
 .nav-links{display:flex;gap:28px;align-items:center;list-style:none;margin:0;padding:0}
 .nav-links a{text-decoration:none;font-weight:500;color:var(--slate-2)}
@@ -218,7 +221,7 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Rise Psychiatry home">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 A26 26 0 1 1 14 13.5" fill="none" stroke="#2F3E46" stroke-width="3.2" stroke-linecap="round"/><path d="M15 43 L27 25 L33.5 33 L38 27.5 L49 43 Z" fill="#84A98C"/><circle cx="42" cy="21" r="3.2" fill="#F6BD60"/></svg>
+      <img src="logo.webp" alt="" width="48" height="48">
       <b>Rise Psychiatry</b>
     </a>
     <nav aria-label="Primary">
@@ -230,7 +233,7 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
       </ul>
     </nav>
     <div class="nav-cta">
-      <a class="portal" href="[PATIENT_PORTAL_URL]">Current patients</a>
+      <a class="portal" href="current-patients.html">Current patients</a>
       <a class="btn btn-gold" href="#contact">Schedule a consultation</a>
       <button class="menu-btn" type="button" aria-label="Open menu">Menu</button>
     </div>
@@ -310,7 +313,7 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
     <div class="letter">
       <p class="eyebrow">About</p>
       <h2 style="margin-bottom:24px">Hello, I'm Dr. Milo Artunduaga.</h2>
-      <p class="lead">I'm a board-certified adult psychiatrist with additional training in child and adolescent psychiatry. In practice, that means I've spent years studying how people become who they are — and I bring that lens to every conversation.</p>
+      <p class="lead">I'm board certified in both adult and child &amp; adolescent psychiatry. In practice, that means I've spent years studying how people become who they are — and I bring that lens to every conversation.</p>
       <p>When you tell me what's hard right now, I'm also listening for the story of how you got here, and what a next chapter could realistically look like. Most of the people I work with are adolescents, young adults, and adults in the middle of a transition: a new city or job, a diagnosis that finally makes sense of things, an identity coming into focus, a relationship ending or beginning. I have a long-standing commitment to LGBTQIA+ patients and to gender-affirming care.</p>
       <p>My approach is collaborative. We'll draw on evidence-based psychotherapies — cognitive behavioral, family-based, insight-oriented — and when medication can help, I'll explain exactly why I'm recommending it and what we should expect from it. Small, consistent changes, made together, are how people rise.</p>
       <p class="sig">— Milo</p>
@@ -451,7 +454,7 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
 <footer>
   <div class="wrap foot">
     <a class="brand" href="#top">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 A26 26 0 1 1 14 13.5" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round"/><path d="M15 43 L27 25 L33.5 33 L38 27.5 L49 43 Z" fill="#84A98C"/><circle cx="42" cy="21" r="3.2" fill="#F6BD60"/></svg>
+      <img src="logo.webp" alt="" width="48" height="48">
       <b>Rise Psychiatry</b>
     </a>
     <ul>
@@ -459,7 +462,7 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
       <li><a href="#services">Services</a></li>
       <li><a href="#fees">Fees &amp; policies</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="[PATIENT_PORTAL_URL]">Current patients</a></li>
+      <li><a href="current-patients.html">Current patients</a></li>
       <li><a href="[PRIVACY_POLICY_URL]">Privacy &amp; policies</a></li>
     </ul>
     <div class="fine">
