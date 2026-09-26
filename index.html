@@ -102,6 +102,8 @@ header{position:sticky;top:0;z-index:20;background:rgba(248,246,241,.92);backdro
 .nav-cta{display:flex;align-items:center;gap:18px}
 .nav-cta .portal{font-weight:500;color:var(--slate-3);text-decoration:none;font-size:.95rem}
 .menu-btn{display:none;background:none;border:1.5px solid var(--slate);border-radius:999px;padding:8px 14px;font:inherit;font-weight:600;color:var(--slate);cursor:pointer}
+.nav-links .mobile-only{display:none}
+section[id]{scroll-margin-top:88px}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;padding-block:0;background:linear-gradient(180deg,#FBF9F4 0%,var(--paper) 100%)}
@@ -203,6 +205,12 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
   .nav-links{display:none}
   .nav-cta .portal{display:none}
   .menu-btn{display:inline-block}
+  header.nav-open .nav-links{display:flex;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 14px 28px rgba(31,42,48,.10);padding:4px 24px 24px}
+  header.nav-open .nav-links li{border-bottom:1px solid var(--line)}
+  header.nav-open .nav-links a{display:block;padding:14px 0;font-size:1.05rem;color:var(--slate)}
+  header.nav-open .nav-links .mobile-only{display:block}
+  header.nav-open .nav-links .mobile-cta{border-bottom:0;padding-top:18px}
+  header.nav-open .nav-links .mobile-cta a{display:flex;justify-content:center;padding:12px 24px}
   .focus,.where{margin-top:48px}
 }
 @media (max-width:560px){
@@ -224,17 +232,19 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
       <b>Rise Psychiatry</b>
     </a>
     <nav aria-label="Primary">
-      <ul class="nav-links">
+      <ul class="nav-links" id="primary-nav">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#fees">Fees &amp; policies</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li class="mobile-only"><a href="current-patients.html">Current patients</a></li>
+        <li class="mobile-only mobile-cta"><a class="btn btn-gold" href="#contact">Schedule a consultation</a></li>
       </ul>
     </nav>
     <div class="nav-cta">
       <a class="portal" href="current-patients.html">Current patients</a>
       <a class="btn btn-gold" href="#contact">Schedule a consultation</a>
-      <button class="menu-btn" type="button" aria-label="Open menu">Menu</button>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">Menu</button>
     </div>
   </div>
 </header>
@@ -468,5 +478,16 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
   </div>
 </footer>
 
+<script>
+(function(){
+  var h=document.querySelector('header'), b=document.querySelector('.menu-btn');
+  if(!h||!b) return;
+  function set(open){ h.classList.toggle('nav-open',open); b.setAttribute('aria-expanded',open?'true':'false'); b.setAttribute('aria-label',open?'Close menu':'Open menu'); b.textContent=open?'Close':'Menu'; }
+  b.addEventListener('click',function(){ set(!h.classList.contains('nav-open')); });
+  h.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('click',function(){ set(false); }); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+  window.addEventListener('resize',function(){ if(window.innerWidth>960) set(false); });
+})();
+</script>
 </body>
 </html>
