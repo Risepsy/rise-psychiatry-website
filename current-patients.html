@@ -38,6 +38,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(248,246,241,.92);backdro
 .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0}
 .nav-links a{text-decoration:none;font-weight:500;color:var(--slate-2)}
 .nav-links a[aria-current]{color:var(--slate);text-decoration:underline;text-decoration-color:var(--gold)}
+.menu-btn{display:none;background:none;border:1.5px solid var(--slate);border-radius:999px;padding:8px 14px;font:inherit;font-weight:600;color:var(--slate);cursor:pointer}
 .intro{padding-top:72px;padding-bottom:40px}
 .intro p{font-size:1.2rem;color:var(--slate-2);max-width:56ch;margin-top:18px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-bottom:40px}
@@ -59,7 +60,13 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
 .foot a{color:#D6DDD9;text-decoration:none}
 .foot a:hover{color:var(--gold)}
 .foot .fine{width:100%;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;margin-top:8px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between}
-@media (max-width:860px){.grid,.office{grid-template-columns:1fr}.nav-links{display:none}.intro{padding-top:48px;padding-bottom:32px}}
+@media (max-width:860px){.grid,.office{grid-template-columns:1fr}.nav-links{display:none}.intro{padding-top:48px;padding-bottom:32px}
+  .menu-btn{display:inline-block}
+  header.nav-open .nav-links{display:flex;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 14px 28px rgba(31,42,48,.10);padding:4px 24px 20px}
+  header.nav-open .nav-links li{border-bottom:1px solid var(--line)}
+  header.nav-open .nav-links li:last-child{border-bottom:0}
+  header.nav-open .nav-links a{display:block;padding:14px 0;font-size:1.05rem;color:var(--slate)}
+}
 @media (max-width:560px){body{font-size:16px}.brand b{font-size:1.15rem}.card{padding:28px 22px}.card .btn{align-self:stretch}}
 </style>
 </head>
@@ -72,7 +79,7 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
       <b>Rise Psychiatry</b>
     </a>
     <nav aria-label="Primary">
-      <ul class="nav-links">
+      <ul class="nav-links" id="primary-nav">
         <li><a href="index.html#about">About</a></li>
         <li><a href="index.html#services">Services</a></li>
         <li><a href="index.html#fees">Fees &amp; policies</a></li>
@@ -80,6 +87,7 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
         <li><a href="current-patients.html" aria-current="page">Current patients</a></li>
       </ul>
     </nav>
+    <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">Menu</button>
   </div>
 </header>
 
@@ -144,5 +152,16 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
   </div>
 </footer>
 
+<script>
+(function(){
+  var h=document.querySelector('header'), b=document.querySelector('.menu-btn');
+  if(!h||!b) return;
+  function set(open){ h.classList.toggle('nav-open',open); b.setAttribute('aria-expanded',open?'true':'false'); b.setAttribute('aria-label',open?'Close menu':'Open menu'); b.textContent=open?'Close':'Menu'; }
+  b.addEventListener('click',function(){ set(!h.classList.contains('nav-open')); });
+  h.querySelectorAll('.nav-links a').forEach(function(a){ a.addEventListener('click',function(){ set(false); }); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') set(false); });
+  window.addEventListener('resize',function(){ if(window.innerWidth>860) set(false); });
+})();
+</script>
 </body>
 </html>
