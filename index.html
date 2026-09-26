@@ -10,7 +10,7 @@
 <meta property="og:title" content="Rise Psychiatry — Rise to your potential">
 <meta property="og:description" content="Psychiatric evaluation, medication management, and psychotherapy for children, adolescents and adults in Washington, DC.">
 <meta property="og:url" content="https://www.risepsychiatry.com/">
-<meta property="og:image" content="https://www.risepsychiatry.com/og-image.jpg">
+<meta property="og:image" content="https://www.risepsychiatry.com/hero-machu-picchu.jpg">
 <meta name="theme-color" content="#2F3E46">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -23,7 +23,7 @@
   "@type": "Psychiatric",
   "name": "Rise Psychiatry",
   "url": "https://www.risepsychiatry.com/",
-  "image": "https://www.risepsychiatry.com/og-image.jpg",
+  "image": "https://www.risepsychiatry.com/hero-machu-picchu.jpg",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "1634 Eye St NW, Suite 550",
@@ -106,10 +106,19 @@ header{position:sticky;top:0;z-index:20;background:rgba(248,246,241,.92);backdro
 section[id]{scroll-margin-top:88px}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;overflow:hidden;padding-block:0;background:linear-gradient(180deg,#FBF9F4 0%,var(--paper) 100%)}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;min-height:640px;padding-block:72px}
-.hero-art{position:relative;aspect-ratio:5/4;max-width:100%;border-radius:var(--radius);overflow:hidden}
-.hero-art svg{display:block;width:100%;height:100%}
+.hero{position:relative;overflow:hidden;padding-block:0;background:var(--ink);color:#fff}
+.hero-media{position:absolute;inset:0;margin:0;overflow:hidden}
+.hero-media img{display:block;width:119.5%;max-width:none;height:100%;object-fit:cover;object-position:0 40%}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(270deg,rgba(31,42,48,.84) 0%,rgba(31,42,48,.6) 36%,rgba(31,42,48,0) 64%)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr minmax(0,560px);align-items:center;min-height:min(78vh,760px);padding-block:80px}
+.hero-copy{grid-column:2}
+.hero h1{color:#fff;font-size:clamp(2.6rem,5vw,4.2rem);text-shadow:0 1px 14px rgba(0,0,0,.25)}
+.hero .eyebrow{color:#F6D59A}
+.hero .lede{color:#F1EEE6;text-shadow:0 1px 10px rgba(0,0,0,.25)}
+.hero .btn-ghost{color:#fff;border-color:#fff}
+.hero .btn-ghost:hover{background:#fff;color:var(--slate)}
+.hero .trust{color:rgba(255,255,255,.88)}
+.hero-credit{position:absolute;left:24px;bottom:18px;z-index:1;margin:0;font-family:var(--serif);font-style:italic;font-size:.88rem;color:rgba(255,255,255,.9)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:32px 0 28px}
 .trust{display:flex;flex-wrap:wrap;gap:10px 24px;padding:0;margin:0;list-style:none;color:var(--slate-3);font-size:.95rem}
 .trust li{display:flex;align-items:center;gap:8px}
@@ -197,8 +206,12 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
 /* ---------- Responsive ---------- */
 @media (max-width:960px){
   section{padding-block:72px}
-  .hero-grid{grid-template-columns:1fr;min-height:0;padding-block:48px 56px}
-  .hero-art{order:-1;aspect-ratio:16/10}
+  .hero-media{position:relative;inset:auto;aspect-ratio:4/3}
+  .hero-media img{object-position:0 50%}
+  .hero::after{display:none}
+  .hero-grid{grid-template-columns:1fr;min-height:0;padding-block:36px 56px}
+  .hero-copy{grid-column:1}
+  .hero-credit{top:calc(75vw - 30px);bottom:auto;left:auto;right:14px;font-size:.8rem;text-shadow:0 1px 6px rgba(0,0,0,.5)}
   .three,.cards,.where,.creds,.focus,.fees-grid,.fit .wrap,.contact .wrap,.about-grid{grid-template-columns:1fr}
   .about-grid{gap:36px}
   .portrait{max-width:420px}
@@ -253,8 +266,11 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
 
 <!-- ===== HERO ===== -->
 <section class="hero">
+  <figure class="hero-media">
+    <img src="hero-machu-picchu.jpg" width="2421" height="1298" alt="Machu Picchu terraces beneath Huayna Picchu, with green Andean ridges and clouds behind" fetchpriority="high">
+  </figure>
   <div class="wrap hero-grid">
-    <div>
+    <div class="hero-copy">
       <p class="eyebrow">Psychiatry &amp; psychotherapy · Washington, DC</p>
       <h1>Rise to your potential.</h1>
       <p class="lede" style="margin-top:20px">Thoughtful, thorough psychiatric care for children, adolescents and adults. One physician who gets to know you; from the first phone call through every session after.</p>
@@ -267,23 +283,8 @@ footer{background:var(--ink);color:#B9C4BE;padding:48px 0 32px;font-size:.92rem}
         <li><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8.5l3 3 7-7"/></svg>Afternoon &amp; evening appointments</li>
       </ul>
     </div>
-    <div class="hero-art" role="img" aria-label="Illustration of mountains at dawn under a soft sky">
-      <!-- Replace with a real dawn/mountain photograph when you have one; this SVG is on-brand until then. -->
-      <svg viewBox="0 0 800 640" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3EFE6"/><stop offset=".55" stop-color="#EDE9DD"/><stop offset="1" stop-color="#DCE5DC"/></linearGradient>
-          <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6BD60" stop-opacity=".55"/><stop offset="1" stop-color="#F6BD60" stop-opacity="0"/></linearGradient>
-        </defs>
-        <rect width="800" height="640" fill="url(#sky)"/>
-        <ellipse cx="540" cy="330" rx="260" ry="170" fill="url(#glow)"/>
-        <circle cx="540" cy="318" r="46" fill="#F6BD60"/>
-        <path d="M0 420 L120 330 L210 390 L330 280 L430 360 L520 300 L640 400 L720 340 L800 390 L800 640 L0 640 Z" fill="#A8C3AF"/>
-        <path d="M0 470 L90 410 L190 460 L300 380 L400 450 L520 390 L610 470 L700 420 L800 480 L800 640 L0 640 Z" fill="#84A98C"/>
-        <path d="M0 540 L110 480 L220 530 L340 470 L470 540 L580 490 L690 550 L800 500 L800 640 L0 640 Z" fill="#5E7A6B"/>
-        <path d="M0 600 L150 560 L300 600 L450 555 L620 610 L800 565 L800 640 L0 640 Z" fill="#2F3E46"/>
-      </svg>
-    </div>
   </div>
+  <p class="hero-credit">Machu Picchu, Peru · photo by Dr. Artunduaga</p>
 </section>
 
 <!-- ===== A DIFFERENT PACE ===== -->
